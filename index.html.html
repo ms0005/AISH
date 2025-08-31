@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Heer!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #a8dadc, #fccde2, #c7e0f4, #d4a5a5);
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.4) 5%, transparent 10%),
+                radial-gradient(circle at 80% 90%, rgba(255, 255, 255, 0.3) 7%, transparent 12%),
+                radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.2) 6%, transparent 11%),
+                radial-gradient(circle at 60% 30%, rgba(255, 255, 255, 0.35) 8%, transparent 13%),
+                url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="8" fill="rgba(255,255,255,0.1)"/><path d="M10 2L12.5 7.5L18 8L13.5 12L15 17.5L10 14L5 17.5L6.5 12L2 8L7.5 7.5Z" fill="rgba(255,255,255,0.1)"/></svg>'); /* Stars and bubbles */
+            background-size: 20px 20px, 20px 20px, 20px 20px, 20px 20px, 40px 40px;
+            pointer-events: none;
+            opacity: 0.7;
+            animation: backgroundShift 20s infinite alternate;
+        }
+
+        @keyframes backgroundShift {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 25px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            padding: 40px 50px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 10;
+        }
+
+        .header-text {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            color: #ff8cbf; /* Pink */
+            position: relative;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 15px;
+            background: linear-gradient(45deg, #ffe0f0, #ffc0d9);
+            box-shadow: inset 0 -3px 0 rgba(0,0,0,0.1);
+        }
+
+        .header-text span.name {
+            display: block;
+            font-size: 1.5em;
+            color: #ffd700; /* Gold */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+            background: linear-gradient(45deg, #fff3e0, #ffedd4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 5px rgba(255,255,255,0.7);
+        }
+
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid #f9a8d4; /* Pink border */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            margin: 30px auto;
+            display: block;
+            background-color: #ffe0f0; /* Soft pink background if image doesn't load */
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), 0 0 0 0px rgba(249, 168, 212, 0.7); }
+            100% { transform: scale(1.03); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 0 15px rgba(249, 168, 212, 0); }
+        }
+
+        .message {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.6em;
+            color: #8855a9; /* Purple */
+            margin-top: 20px;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
+        }
+
+        .question {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.8em;
+            color: #6a057e; /* Darker purple */
+            margin-top: 30px;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+            position: relative;
+        }
+
+        .question::before {
+            content: '❓';
+            position: absolute;
+            left: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1em;
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .option-button {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2em;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(45deg, #ff7eb9, #ffb3d9);
+        }
+
+        .option-button:first-child {
+             background: linear-gradient(45deg, #ff7eb9, #ffb3d9);
+        }
+
+        .option-button:last-child {
+            background: linear-gradient(45deg, #a7e9af, #7ed6b2); /* A slightly different shade for the second YES */
+        }
+
+        .option-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+            filter: brightness(1.1);
+        }
+
+        .option-button:active {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .option-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: all 0.6s ease-out;
+            transform: translate(-50%, -50%) scale(0);
+            z-index: 0;
+        }
+
+        .option-button:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0;
+        }
+
+        .option-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            .header-text {
+                font-size: 2em;
+            }
+            .header-text span.name {
+                font-size: 1.2em;
+            }
+            .profile-image {
+                width: 150px;
+                height: 150px;
+                margin: 20px auto;
+            }
+            .message {
+                font-size: 1.4em;
+            }
+            .question {
+                font-size: 1.6em;
+                margin-top: 25px;
+                margin-bottom: 20px;
+            }
+            .question::before {
+                left: -30px;
+            }
+            .options {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .option-button {
+                font-size: 1.6em;
+                padding: 12px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-text">
+            HAPPY BIRTHDAY
+            <span class="name">HEER</span>
+        </div>
+        <img src="heer.jpeg" alt="Happy Birthday Heer" class="profile-image">
+        <p class="message">I am Sage...</p>
+        <p class="question">Will you marry me?</p>
+        <div class="options">
+            <button class="option-button"><span>YES</span></button>
+            <button class="option-button"><span>YES</span></button>
+        </div>
+    </div>
+</body>
+</html>
